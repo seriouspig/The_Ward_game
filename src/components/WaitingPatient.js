@@ -6,6 +6,7 @@ const WaitingPatient = ({patient, handleAdmission}) => {
         <div>
             <p>Waiting Patient</p>
             <PatientInfo patient={patient} />
+            <button value={patient.id} onClick={handleAdmission}>Admit</button>
             
         </div>
     )

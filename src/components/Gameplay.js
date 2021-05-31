@@ -54,20 +54,20 @@ const Gameplay = () => {
     }, [patients])  
 
     const handleAdmission = (event) => {
-        console.log(event)
+        // console.log(event)
+        
         for (const patient of patients) {
           if (patient.id === parseInt(event.target.value)) {
             
-            
-            // setPatients({ ...patients.patient,
-            //             patient.status: "Admitted"
-            
-            console.log("Found patient")
             patient.status = "Admitted";
+            console.log(patient.name + " " + patient.status)
+            
           }
+          
         }
-        setPatients(patients)
+        setPatients([...patients])
         
+                 
       }
     
 
