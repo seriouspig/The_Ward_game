@@ -6,6 +6,7 @@ import Request from '../helpers/request';
 
 const Gameplay = () => {
 
+    const [allPatients, setAllPatients] = useState([])
     const [patients, setPatients] = useState([])
     const [specialists, setSpecialists] = useState([])
     const [waitingPatients, setWaitingPatients] = useState([])
@@ -17,11 +18,18 @@ const Gameplay = () => {
     
         request.get('http://localhost:8080/api/patients')
         .then((data) => {
-            setPatients(visiblePatients(data))
-            
-            
+            setAllPatients(data)
         })
         }, []) 
+
+        useEffect(() => {
+            const request2 = new Request();
+        
+            request2.get('http://localhost:8080/api/patients')
+            .then((data) => {
+                setPatients(visiblePatients(data))
+            })
+            }, []) 
 
     useEffect(() => {
         const request1 = new Request();
@@ -66,11 +74,9 @@ const Gameplay = () => {
             
           }         
         }
-        
+        patients.push(allPatients[Math.floor((Math.random() * 50) + 1)])
         setPatients([...patients])   
-        
-        
-                 
+                         
       }
     
 
