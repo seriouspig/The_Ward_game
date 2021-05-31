@@ -1,11 +1,12 @@
 import React from 'react'
 import PatientInfo from './PatientInfo'
 
-const WaitingPatient = () => {
+const WaitingPatient = ({patient, handleAdmission}) => {
     return (
         <div>
-            <p>I am a waiting room patient</p>
-            <PatientInfo />
+            <p>Waiting Patient</p>
+            <PatientInfo patient={patient} />
+            
         </div>
     )
 }

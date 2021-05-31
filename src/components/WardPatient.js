@@ -1,11 +1,12 @@
 import PatientInfo from './PatientInfo'
 
-const WardPatient = () => {
+const WardPatient = ({patient}) => {
 
     return (
         <>
         <p>Ward Patient</p>
-        <PatientInfo />
+        <PatientInfo patient={patient}/>
+        
         </>
     )
 }

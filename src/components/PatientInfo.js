@@ -1,8 +1,10 @@
-const PatientInfo = () => {
+const PatientInfo = ({patient}) => {
 
     return (
         <>
-        <p>Patient Info</p>
+            <p>{patient.name}</p>
+            <p>{patient.age}</p>
+            <p>{patient.health}</p>
         </>
     )
 }
