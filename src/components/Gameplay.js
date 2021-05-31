@@ -3,6 +3,7 @@ import Ward from './Ward'
 import SpecialistGlossary from './SpecialistGlossary'
 import {useState, useEffect} from 'react'
 import Request from '../helpers/request';
+import './PatientInfo.css'
 
 const Gameplay = () => {
 
@@ -84,8 +85,10 @@ const Gameplay = () => {
         <>
         <h3>gameplay</h3>
         <SpecialistGlossary />
+        <div className="flex-container">
         <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
         <Ward admittedPatients={admittedPatients} specialists={specialists}/>
+        </div>
         </>
     )
 }
