@@ -9,7 +9,7 @@ const WaitingRoom = ({waitingPatients, handleAdmission}) => {
     const waiting = waitingPatients.map((patient, index ) => {
         return (
             <li key={index} className="component-item">
-                <div className="component">
+                <div >
                     <WaitingPatient patient={patient} handleAdmission={handleAdmission}/>
                 </div>
             </li>

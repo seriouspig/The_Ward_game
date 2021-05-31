@@ -1,0 +1,24 @@
+.photo {
+    height:120px;
+    image-rendering: pixelated;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.component {
+    margin: 20px;
+    padding: 10px;
+    width: 400px;
+    border: 1px solid black;
+    background-color: #CCCCCC;
+  }
+
+  .ward-patient {
+    margin: 20px;
+    padding: 10px;
+    width: 400px;
+    border: 1px solid black;
+    background-color: #b97c7c;
+  }

@@ -18,6 +18,8 @@ const Gameplay = () => {
         request.get('http://localhost:8080/api/patients')
         .then((data) => {
             setPatients(visiblePatients(data))
+            
+            
         })
         }, []) 
 
@@ -51,10 +53,10 @@ const Gameplay = () => {
             patient.status === "WAITING"
         )
         setWaitingPatients(waiting)
+        
     }, [patients])  
 
     const handleAdmission = (event) => {
-        // console.log(event)
         
         for (const patient of patients) {
           if (patient.id === parseInt(event.target.value)) {
@@ -62,10 +64,11 @@ const Gameplay = () => {
             patient.status = "Admitted";
             console.log(patient.name + " " + patient.status)
             
-          }
-          
+          }         
         }
-        setPatients([...patients])
+        
+        setPatients([...patients])   
+        
         
                  
       }

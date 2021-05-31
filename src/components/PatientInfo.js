@@ -1,10 +1,17 @@
+import './PatientInfo.css'
+
 const PatientInfo = ({patient}) => {
 
     return (
         <>
-            <p>{patient.name}</p>
-            <p>{patient.age}</p>
-            <p>{patient.health}</p>
+        <div className="flex-container">
+        <img src={`/images/patients/${patient.name}.png`} className="photo"/>
+            <div>
+            <p>NAME: {patient.name}</p>
+            <p>AGE: {patient.age}</p>
+            <p>HEALTH: {patient.health}</p>
+            </div>
+        </div>
         </>
     )
 }
