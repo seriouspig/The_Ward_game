@@ -20,7 +20,6 @@ const Ward = ({admittedPatients, specialists, handleAssignment, handleTreatment}
 
     return(
         <>
-        <h2>Ward</h2>
         <ul className="ward-grid">
         {admitted}
         </ul>
