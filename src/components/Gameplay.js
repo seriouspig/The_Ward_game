@@ -13,6 +13,7 @@ const Gameplay = () => {
     const [waitingPatients, setWaitingPatients] = useState([])
     const [admittedPatients, setAdmittedPatients] = useState([])
     const [points, setPoints] = useState(0) 
+    const [intervalId, setIntervalId] = useState(null)
 
     useEffect(() => {
         const request = new Request();
@@ -63,7 +64,17 @@ const Gameplay = () => {
         )
         setWaitingPatients(waiting)
         
-    }, [patients])  
+    }, [patients])
+    
+    useEffect(() => {
+        if (intervalId) {
+            clearInterval(intervalId)
+        }
+        if (patients.length) {
+            const id = setInterval(handleHealthUpdate, 1000)
+            setIntervalId(id)
+        }
+    },[patients])
 
     const handleAdmission = (event) => {
         
@@ -96,6 +107,35 @@ const Gameplay = () => {
         }
         setPatients([...patients]) 
       }
+
+      const calculateHealthChange = patient => {
+          const changeLookup = {
+              WAITING: -1,
+              Admitted: -1,
+
+          }
+          return changeLookup[patient.status]
+      }
+
+      const handleHealthUpdate = () => {
+    //       for (const patient of allPatients) {
+    //         if (waitingPatients.includes(patient) || admittedPatients.includes(patient)){
+    //             patient.health -= 1
+    //           }
+    //       }
+    //       setPatients([...patients]) 
+          const newPatients = patients.map(patient => {
+            const change = calculateHealthChange(patient)
+            
+              return {
+                  ...patient,
+                  health: patient.health + change
+              }
+          })
+          console.log(newPatients)
+
+          setPatients(newPatients) 
+      } 
     
 
     return(
