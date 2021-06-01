@@ -1,6 +1,6 @@
 import React from 'react'
 import PatientInfo from './PatientInfo'
-import './PatientInfo.css'
+import '../style/PatientInfo.css'
 
 const WaitingPatient = ({patient, handleAdmission}) => {
     return (
