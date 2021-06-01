@@ -1,4 +1,5 @@
 import WardPatient from './WardPatient'
+import '../style/Ward.css'
 
 const Ward = ({admittedPatients, specialists, handleAssignment, handleTreatment}) => {
 
@@ -20,7 +21,7 @@ const Ward = ({admittedPatients, specialists, handleAssignment, handleTreatment}
     return(
         <>
         <h2>Ward</h2>
-        <ul>
+        <ul className="ward-grid">
         {admitted}
         </ul>
         </>
