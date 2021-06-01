@@ -4,7 +4,7 @@ import SpecialistGlossary from './SpecialistGlossary'
 import Scoreboard from './Scoreboard'
 import {useState, useEffect} from 'react'
 import Request from '../helpers/request';
-import './PatientInfo.css'
+import '../style/Gameplay.css'
 
 const Gameplay = () => {
 
@@ -45,7 +45,7 @@ const Gameplay = () => {
     
     const visiblePatients = (patientData) => {
         let visiblePatientsList = [];
-            while(visiblePatientsList.length < 8){
+            while(visiblePatientsList.length < 6){
                 visiblePatientsList.push(patientData[Math.floor((Math.random() * 100) + 1)])
             }
             return visiblePatientsList;
@@ -153,7 +153,7 @@ const Gameplay = () => {
             if (patient.health <= 0) {
                 patient.status = "Done";
                 setPoints(points - 100)
-                if (waitingPatients.length < 8) {
+                if (waitingPatients.length < 6) {
                     patients.push(allPatients[Math.floor((Math.random() * 100) + 1)])
                 }
             } 
@@ -166,15 +166,22 @@ const Gameplay = () => {
     }
 
     return(
-        <>
-        <h3>gameplay</h3>
-        <SpecialistGlossary />
-        <div className="flex-container">
-        <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
-        <Ward admittedPatients={admittedPatients} specialists={specialists} handleAssignment={(specialistId, patientId) => handleAssignment(specialistId, patientId)} handleTreatment={handleTreatment}/>
-        <Scoreboard points={points}/>
+        <div className="main-grid">
+            <div className="scoreboard">
+                <Scoreboard points={points}/>
+            </div>    
+             <div className="glossary">  
+                <SpecialistGlossary />
+            </div>
+            <div className="waiting-room">
+                <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
+            </div> 
+            <div className="ward">   
+                <Ward admittedPatients={admittedPatients} specialists={specialists} 
+                handleAssignment={(specialistId, patientId) => handleAssignment(specialistId, patientId)} 
+                handleTreatment={handleTreatment}/>
+            </div>
         </div>
-        </>
     )
 }
     

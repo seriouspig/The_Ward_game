@@ -1,4 +1,5 @@
 import WaitingPatient from './WaitingPatient'
+import '../style/WaitingRoom.css'
 
 const WaitingRoom = ({waitingPatients, handleAdmission}) => {
 
@@ -18,8 +19,7 @@ const WaitingRoom = ({waitingPatients, handleAdmission}) => {
 
     return(
         <>
-        <h2>Waiting Room</h2>
-        <ul>
+        <ul className="patients-list">
         {waiting}
         </ul>
         </>

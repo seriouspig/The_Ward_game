@@ -1,0 +1,10 @@
+.patients-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    list-style: none;
+}
+
+.patient-list > li {
+    text-decoration: none;
+}
+

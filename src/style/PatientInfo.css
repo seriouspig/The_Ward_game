@@ -8,12 +8,16 @@
 }
 
 .component {
-    margin: 10px;
-    padding: 10px;
-    width: 200px;
-    border: 1px solid black;
-    background-color: #CCCCCC;
-    font-size: 75%;
+    margin: 20px;
+    width: 150px;
+    height: 150px;
+    font-size: 10px
+  }
+
+  .patient-data{
+    font-size: 12px;
+    margin-bottom: 8px;
+    margin-top: 0px
   }
 
   .ward-patient {
