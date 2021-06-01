@@ -1,7 +1,7 @@
 import PatientInfo from './PatientInfo'
 import {useState} from 'react'
 
-const WardPatient = ({patient, specialists, handleAssignment}) => {
+const WardPatient = ({patient, specialists, handleAssignment, handleTreatment}) => {
 
     const [symptomsNumber, setSymptomsNumber] = useState(3);
 
@@ -30,6 +30,7 @@ const WardPatient = ({patient, specialists, handleAssignment}) => {
             <option value="" disabled selected>Assign Specialist</option>
            {specialistsDropdown}
         </select>
+        <button value={patient.id} onClick={handleTreatment} >Treat </button>
         <p>Current Specialist: {patient.specialist}</p>
         </div>
         </>

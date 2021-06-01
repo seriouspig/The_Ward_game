@@ -40,7 +40,7 @@ const Gameplay = () => {
         .then((data) => {
             setSpecialists(data)
         })
-        }, []) 
+        }, [])  
     
     
     const visiblePatients = (patientData) => {
@@ -118,12 +118,7 @@ const Gameplay = () => {
       }
 
       const handleHealthUpdate = () => {
-    //       for (const patient of allPatients) {
-    //         if (waitingPatients.includes(patient) || admittedPatients.includes(patient)){
-    //             patient.health -= 1
-    //           }
-    //       }
-    //       setPatients([...patients]) 
+
           const newPatients = patients.map(patient => {
             const change = calculateHealthChange(patient)
             
@@ -132,11 +127,22 @@ const Gameplay = () => {
                   health: patient.health + change
               }
           })
-          console.log(newPatients)
 
           setPatients(newPatients) 
       } 
-    
+
+      const handleTreatment = (event) => {
+        for (const patient of admittedPatients) {
+            if (patient.id === parseInt(event.target.value)) {
+                if (patient.specialist === patient.illness.specialist.speciality){
+                    patient.health += 10
+                } else {
+                    patient.health -= 10
+                }
+        }
+      }
+        setAdmittedPatients([...admittedPatients])
+    }    
 
     return(
         <>
@@ -144,7 +150,7 @@ const Gameplay = () => {
         <SpecialistGlossary />
         <div className="flex-container">
         <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
-        <Ward admittedPatients={admittedPatients} specialists={specialists} handleAssignment={(specialistId, patientId) => handleAssignment(specialistId, patientId)}/>
+        <Ward admittedPatients={admittedPatients} specialists={specialists} handleAssignment={(specialistId, patientId) => handleAssignment(specialistId, patientId)} handleTreatment={handleTreatment}/>
         </div>
         </>
     )

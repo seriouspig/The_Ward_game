@@ -1,6 +1,6 @@
 import WardPatient from './WardPatient'
 
-const Ward = ({admittedPatients, specialists, handleAssignment}) => {
+const Ward = ({admittedPatients, specialists, handleAssignment, handleTreatment}) => {
 
     if (admittedPatients === 0) {
         return (<p>Loading...</p>)
@@ -10,7 +10,7 @@ const Ward = ({admittedPatients, specialists, handleAssignment}) => {
         return (
             <li key={index}>
                 <div>
-                    <WardPatient patient={patient} specialists={specialists} handleAssignment={handleAssignment}/>
+                    <WardPatient patient={patient} specialists={specialists} handleAssignment={handleAssignment} handleTreatment={handleTreatment}/>
                 </div>
 
             </li>
