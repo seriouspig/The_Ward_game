@@ -1,6 +1,7 @@
 import WaitingRoom from './WaitingRoom'
 import Ward from './Ward'
 import SpecialistGlossary from './SpecialistGlossary'
+import Scoreboard from './Scoreboard'
 import {useState, useEffect} from 'react'
 import Request from '../helpers/request';
 import './PatientInfo.css'
@@ -24,14 +25,14 @@ const Gameplay = () => {
         })
         }, []) 
 
-        useEffect(() => {
-            const request2 = new Request();
-        
-            request2.get('http://localhost:8080/api/patients')
-            .then((data) => {
-                setPatients(visiblePatients(data))
-            })
-            }, []) 
+    useEffect(() => {
+        const request2 = new Request();
+    
+        request2.get('http://localhost:8080/api/patients')
+        .then((data) => {
+            setPatients(visiblePatients(data))
+        })
+        }, []) 
 
     useEffect(() => {
         const request1 = new Request();
@@ -41,7 +42,6 @@ const Gameplay = () => {
             setSpecialists(data)
         })
         }, [])  
-    
     
     const visiblePatients = (patientData) => {
         let visiblePatientsList = [];
@@ -75,6 +75,8 @@ const Gameplay = () => {
             setIntervalId(id)
         }
     },[patients])
+
+    
 
     const handleAdmission = (event) => {
         
@@ -118,7 +120,7 @@ const Gameplay = () => {
       }
 
       const handleHealthUpdate = () => {
-
+        handleDischarge()
           const newPatients = patients.map(patient => {
             const change = calculateHealthChange(patient)
             
@@ -126,9 +128,11 @@ const Gameplay = () => {
                   ...patient,
                   health: patient.health + change
               }
+
           })
 
-          setPatients(newPatients) 
+          setPatients(newPatients)
+          
       } 
 
       const handleTreatment = (event) => {
@@ -142,7 +146,24 @@ const Gameplay = () => {
         }
       }
         setAdmittedPatients([...admittedPatients])
-    }    
+    }  
+    
+    const handleDischarge = () => {
+        for (const patient of patients) {
+            if (patient.health <= 0) {
+                patient.status = "Done";
+                setPoints(points - 100)
+                if (waitingPatients.length < 8) {
+                    patients.push(allPatients[Math.floor((Math.random() * 100) + 1)])
+                }
+            } 
+            if (patient.health >= 100) {
+                patient.status = "Done";
+                setPoints(points + 100)
+            }        
+        }         
+        setPatients([...patients])   
+    }
 
     return(
         <>
@@ -151,6 +172,7 @@ const Gameplay = () => {
         <div className="flex-container">
         <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
         <Ward admittedPatients={admittedPatients} specialists={specialists} handleAssignment={(specialistId, patientId) => handleAssignment(specialistId, patientId)} handleTreatment={handleTreatment}/>
+        <Scoreboard points={points}/>
         </div>
         </>
     )
