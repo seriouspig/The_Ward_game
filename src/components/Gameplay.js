@@ -45,7 +45,7 @@ const Gameplay = () => {
     const visiblePatients = (patientData) => {
         let visiblePatientsList = [];
             while(visiblePatientsList.length < 8){
-                visiblePatientsList.push(patientData[Math.floor((Math.random() * 50) + 1)])
+                visiblePatientsList.push(patientData[Math.floor((Math.random() * 100) + 1)])
             }
             return visiblePatientsList;
         }
@@ -67,6 +67,7 @@ const Gameplay = () => {
 
     const handleAdmission = (event) => {
         
+        if (admittedPatients.length < 8) {
         for (const patient of patients) {
           if (patient.id === parseInt(event.target.value)) {
             
@@ -75,9 +76,24 @@ const Gameplay = () => {
             
           }         
         }
-        patients.push(allPatients[Math.floor((Math.random() * 50) + 1)])
+        patients.push(allPatients[Math.floor((Math.random() * 100) + 1)])
         setPatients([...patients])   
-                         
+              
+      }
+    }
+
+      const handleAssignment = (event, patientId) => {
+          let selectedSpecialist = null;
+        for (const specialist of specialists) {
+            if(specialist.id === parseInt(event.target.value)){
+                selectedSpecialist = specialist;
+            }
+        }   
+        for (const patient of admittedPatients) {
+            if (patient.id === parseInt(patientId)) {
+                patient.specialist = selectedSpecialist;
+            }
+        }
       }
     
 
@@ -92,5 +108,7 @@ const Gameplay = () => {
         </>
     )
 }
+    
+
 
 export default Gameplay;

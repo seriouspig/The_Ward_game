@@ -1,6 +1,7 @@
 import './PatientInfo.css'
+import Symptoms from './Symptoms'
 
-const PatientInfo = ({patient}) => {
+const PatientInfo = ({patient, symptomsNumber}) => {
 
     return (
         <>
@@ -11,6 +12,7 @@ const PatientInfo = ({patient}) => {
             <p>AGE: {patient.age}</p>
             <p>HEALTH: {patient.health}</p>
             </div>
+            <Symptoms patient={patient}  symptomsNumber={symptomsNumber}/>
         </div>
         </>
     )

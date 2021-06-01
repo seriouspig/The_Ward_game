@@ -10,7 +10,7 @@ const Ward = ({admittedPatients, specialists}) => {
         return (
             <li key={index}>
                 <div>
-                    <WardPatient patient={patient} />
+                    <WardPatient patient={patient} specialists={specialists}/>
                 </div>
 
             </li>
