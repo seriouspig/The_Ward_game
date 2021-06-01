@@ -10,7 +10,7 @@ const WaitingRoom = ({waitingPatients, handleAdmission}) => {
         return (
             <li key={index} className="component-item">
                 <div >
-                    <WaitingPatient patient={patient} handleAdmission={handleAdmission}/>
+                    <WaitingPatient key={patient.id} patient={patient} handleAdmission={handleAdmission}/>
                 </div>
             </li>
         )

@@ -28,7 +28,7 @@ const Symptoms = ({patient,  symptomsNumber}) => {
 
     return (
         <>
-        <h2>Ward</h2>
+        
         <ul>
         {symptomsAssignment(patient)}
         </ul>

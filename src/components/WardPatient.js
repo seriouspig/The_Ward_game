@@ -1,7 +1,7 @@
 import PatientInfo from './PatientInfo'
 import {useState} from 'react'
 
-const WardPatient = ({patient, specialists}) => {
+const WardPatient = ({patient, specialists, handleAssignment}) => {
 
     const [symptomsNumber, setSymptomsNumber] = useState(3);
 
@@ -10,9 +10,14 @@ const WardPatient = ({patient, specialists}) => {
         setSymptomsNumber(symptomsNumber + 1)
     }
 
+    const submitAssingment = (evt) => {
+        handleAssignment(evt.target.value, patient.id)
+    }
+    
+
     const specialistsDropdown = specialists.map((specialist, index) => {
         return (
-            <option value="{{specialist.id}},{{patient.id}}">{`Dr. ${specialist.name}`}</option>
+            <option key={specialist.id} value={specialist.id}>{`Dr. ${specialist.name}`}</option>
         )
     })
 
@@ -21,7 +26,7 @@ const WardPatient = ({patient, specialists}) => {
         <div className="ward-patient">
         <PatientInfo patient={patient}  symptomsNumber={symptomsNumber}/>
         <button onClick={increaseSymptoms}>Show another symptom</button>
-        <select name="specialists" id="specialists" >
+        <select name="specialists" id="specialists" onChange={submitAssingment}>
             <option value="" disabled selected>Assign Specialist</option>
            {specialistsDropdown}
         </select>

@@ -82,18 +82,19 @@ const Gameplay = () => {
       }
     }
 
-      const handleAssignment = (event, patientId) => {
-          let selectedSpecialist = null;
+      const handleAssignment = (specialistId, patientId) => {
+        let selectedSpecialist = null;
         for (const specialist of specialists) {
-            if(specialist.id === parseInt(event.target.value)){
+            if(specialist.id === parseInt(specialistId)){
                 selectedSpecialist = specialist;
             }
         }   
         for (const patient of admittedPatients) {
-            if (patient.id === parseInt(patientId)) {
-                patient.specialist = selectedSpecialist;
+            if (patient.id === patientId) {
+                patient.specialist = selectedSpecialist.speciality;
             }
         }
+        setPatients([...patients]) 
       }
     
 
@@ -103,7 +104,7 @@ const Gameplay = () => {
         <SpecialistGlossary />
         <div className="flex-container">
         <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
-        <Ward admittedPatients={admittedPatients} specialists={specialists}/>
+        <Ward admittedPatients={admittedPatients} specialists={specialists} handleAssignment={(specialistId, patientId) => handleAssignment(specialistId, patientId)}/>
         </div>
         </>
     )
