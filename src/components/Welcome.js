@@ -3,7 +3,11 @@ const Welcome = () => {
 
     return(
         <>
-        <h1>Welcome to The Ward</h1>
+          <h1>THE WARD</h1>
+          <img/>
+          <button>Start Diagnosing</button>
+          <button>The Rules</button>
+
         </>
     )
 }

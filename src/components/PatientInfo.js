@@ -1,11 +1,12 @@
 import '../style/PatientInfo.css'
 import Symptoms from './Symptoms'
+import HealthBar from './HealthBar'
 
 const PatientInfo = ({patient, symptomsNumber}) => {
 
     return (
         <>
-        <p>HEALTH: {patient.health}</p>
+        <HealthBar percent={patient.health} />
         <div className="flex-container">
         <img src={`/images/patients/${patient.name}.png`} className="photo"/>
             <div>

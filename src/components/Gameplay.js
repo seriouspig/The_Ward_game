@@ -1,6 +1,7 @@
 import WaitingRoom from './WaitingRoom'
 import Ward from './Ward'
 import SpecialistGlossary from './SpecialistGlossary'
+import Counter from './Counter'
 import Scoreboard from './Scoreboard'
 import {useState, useEffect} from 'react'
 import Request from '../helpers/request';
@@ -71,7 +72,7 @@ const Gameplay = () => {
         if (intervalId) {
             clearInterval(intervalId)
         }
-        if (patients.length) {
+        if (patients.length && counter>0) {
             const id = setInterval(handleHealthUpdate, 1000)
             setIntervalId(id)
         }
@@ -177,9 +178,8 @@ const Gameplay = () => {
         setAdmittedPatients([...admittedPatients])
     }
 
-    const calculateTimeLeft = () => {
+    
 
-    }
 
     return(
         <div className="main-grid">
@@ -187,8 +187,8 @@ const Gameplay = () => {
                 <Scoreboard points={points}/>
             </div>    
              <div className="glossary">  
-                <SpecialistGlossary />
                 <Counter counter={counter} />
+                <SpecialistGlossary specialists={specialists} />
             </div>
             <div className="waiting-room">
                 <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
