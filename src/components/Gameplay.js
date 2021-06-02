@@ -188,7 +188,7 @@ const Gameplay = () => {
             </div>    
              <div className="glossary">  
                 <SpecialistGlossary />
-                <div>Countdown: {counter}</div>
+                <Counter counter={counter} />
             </div>
             <div className="waiting-room">
                 <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
