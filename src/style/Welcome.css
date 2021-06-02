@@ -29,3 +29,11 @@
     flex-flow: row wrap;
     justify-content: center;
 }
+
+.guy{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+

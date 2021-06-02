@@ -18,8 +18,8 @@ const Welcome = () => {
             <button className="start-game">Start Diagnosing</button>
           </Link>
           <button className="rules-button" onClick={() => setIsPopupShown(true)}>The Rules</button>
-          
           </div>
+          <img src="/images/backgrounds/guy.gif" className="guy"/>
         </>
     )
 }
