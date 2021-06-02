@@ -1,13 +1,18 @@
+import {Link} from 'react-router-dom';
+import '../style/Welcome.css'
 
 const Welcome = () => {
 
     return(
         <>
-          <h1>THE WARD</h1>
+          <p className="Title">THE WARD</p>
           <img/>
-          <button>Start Diagnosing</button>
-          <button>The Rules</button>
-
+          <div className="flex-buttons">
+          <Link to="/gameplay">
+            <button className="start-game">Start Diagnosing</button>
+          </Link>
+          <button className="rules-button">The Rules</button>
+          </div>
         </>
     )
 }

@@ -3,9 +3,11 @@ import Ward from './Ward'
 import SpecialistGlossary from './SpecialistGlossary'
 import Counter from './Counter'
 import Scoreboard from './Scoreboard'
+import Popup from './Popup'
 import {useState, useEffect} from 'react'
 import Request from '../helpers/request';
 import '../style/Gameplay.css'
+import { Jumbotron, Container } from 'react-bootstrap'
 
 const Gameplay = () => {
 
@@ -183,6 +185,7 @@ const Gameplay = () => {
 
     return(
         <div className="main-grid">
+            
             <div className="scoreboard">
                 <Scoreboard points={points}/>
             </div>    

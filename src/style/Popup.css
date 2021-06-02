@@ -1,0 +1,19 @@
+.popup {
+    dsply: grid;
+    grid-template-areas: 
+    "heading heading button"
+    "message message message"
+    ;
+}
+.close-button {
+    text-decoration: underline;
+    color:red;
+}ss
+s
+
+.hedn a
+    
+
+message  {}
+    
+p
