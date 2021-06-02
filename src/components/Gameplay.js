@@ -20,7 +20,7 @@ const Gameplay = () => {
     const [admittedPatients, setAdmittedPatients] = useState([])
     const [points, setPoints] = useState(0) 
     const [intervalId, setIntervalId] = useState(null)
-    const [counter, setCounter] = useState(1);
+    const [counter, setCounter] = useState(100);
     const [isPopupShown, setIsPopupShown] = useState(false)
     const [isPatientPopupShown, setIsPatientPopupShown] = useState(false)
     const [message, setMessage] = useState("")
