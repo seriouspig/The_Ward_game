@@ -13,3 +13,8 @@
 .specialty{
     font-size: 15px;
 }
+
+.specialist-photo{
+    height: 75px;
+    image-rendering: pixelated;
+}

@@ -1,7 +1,9 @@
+import '../style/ScoreTimer.css'
+
 const Scoreboard = ({points}) => {
     return(
         <>
-        <p>Points: {points}</p>
+        <p className="scores">SCORE: {points}</p>
         </>
     )
 
