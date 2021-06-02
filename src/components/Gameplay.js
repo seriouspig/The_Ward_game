@@ -52,9 +52,9 @@ const Gameplay = () => {
     const visiblePatients = (patientData) => {
         let visiblePatientsList = [];
             while(visiblePatientsList.length < 6){
-                let patient = allPatients[Math.floor((Math.random() * 100))]
+                let patient = allPatients[Math.floor((Math.random() * 200))]
                 while(patients.filter(p => p.id === patient.id).length) {
-                    patient = allPatients[Math.floor((Math.random() * 100))]
+                    patient = allPatients[Math.floor((Math.random() * 200))]
                 }
                 visiblePatientsList.push(patient)
             }
@@ -111,9 +111,9 @@ const Gameplay = () => {
             
           }         
         }
-        let patient = allPatients[Math.floor((Math.random() * 100))]
+        let patient = allPatients[Math.floor((Math.random() * 200))]
         while(patients.filter(p => p.id === patient.id).length) {
-            patient = allPatients[Math.floor((Math.random() * 100))]
+            patient = allPatients[Math.floor((Math.random() * 200))]
         }
         patients.push(patient)
         setPatients([...patients])   
@@ -182,9 +182,9 @@ const Gameplay = () => {
                 setMessage(<p>{patient.name} died from {patient.illness.name}</p>)
                 setIsPatientPopupShown(true)
                 if (waitingPatients.length < 6) {
-                    let patient = allPatients[Math.floor((Math.random() * 100))]
+                    let patient = allPatients[Math.floor((Math.random() * 200))]
                     while(patients.filter(p => p.id === patient.id).length) {
-                        patient = allPatients[Math.floor((Math.random() * 100))]
+                        patient = allPatients[Math.floor((Math.random() * 200))]
                     }
                     patients.push(patient)
                 }
