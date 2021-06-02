@@ -1,8 +1,10 @@
 .popuplarge-container {
-    position: relative ;
-    bottom: 30px;
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%;
 
     display: flex;
     justify-content: center;
@@ -12,7 +14,7 @@
 
 .popuplarge {
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 1fr auto;
     padding: 15px;
     justify-content: center;
     gap: 1em;
@@ -28,4 +30,10 @@
     color:red;
     justify-self: flex-end;
     cursor: pointer;
+}
+
+.messagelarge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

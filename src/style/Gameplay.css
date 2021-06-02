@@ -45,3 +45,24 @@
     border: black solid 8px;
     padding: 5px
 }
+
+.popup-content{
+    text-align: center;
+}
+
+.game-over{
+    font-size: 60px;
+    color: red;
+}
+
+.score{
+    font-size: 40px;
+}
+
+.play-again{
+    color: red;
+    font-size: 40px;
+    padding: 8px;
+
+}
+
