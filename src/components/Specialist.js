@@ -4,7 +4,7 @@ const Specialist = ({specialist}) => {
     return (
         <div className="flex-specialists">
             <div>
-                <img src={`/images/specialists/${specialist.name}.png`} className="photo"/>
+                <img src={`/images/specialists/${specialist.name}.png`} className="specialist-photo"/>
             </div>
             <div>
                 <h4>{`Dr. ${specialist.name}`}</h4>
