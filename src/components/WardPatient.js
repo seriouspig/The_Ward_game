@@ -1,5 +1,6 @@
 import PatientInfo from './PatientInfo'
 import {useState} from 'react'
+import '../style/Ward.css'
 
 const WardPatient = ({patient, specialists, handleAssignment, handleTreatment, healthDecreaseOnNewSymptom}) => {
 
@@ -25,14 +26,16 @@ const WardPatient = ({patient, specialists, handleAssignment, handleTreatment, h
     return (
         <>
         <div className="ward-patient">
-        <PatientInfo patient={patient}  symptomsNumber={symptomsNumber}/>
-        <button onClick={increaseSymptoms}>Show another symptom</button>
-        <select name="specialists" id="specialists" onChange={submitAssingment}>
-            <option value="" disabled selected>Assign Specialist</option>
-           {specialistsDropdown}
-        </select>
-        <button value={patient.id} onClick={handleTreatment} >Treat </button>
-        <p>Current Specialist: {patient.specialist}</p>
+            <PatientInfo patient={patient}  symptomsNumber={symptomsNumber}/>
+            <div className="buttons">
+            <button onClick={increaseSymptoms} className="symptom-button"> Show another symptom</button>
+            <select name="specialists" id="specialists" onChange={submitAssingment} className="doctor-select">
+                <option value="" disabled selected>Assign Specialist</option>
+            {specialistsDropdown}
+            </select>
+            <br/>
+            <button value={patient.id} onClick={handleTreatment} className="treat-button">TREAT</button>
+            </div>
         </div>
         </>
     )

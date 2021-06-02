@@ -32,8 +32,13 @@
     background-color: bisque;
     border-radius: 3px;
     margin: 5px;
-}
-.waiting-button:hover {
-    background-color: red;
-    color: black;
-}
+  }
+
+  .waiting-button:hover {
+      background-color: red;
+      color: black;
+  }
+  
+  .health-bar{
+    margin-bottom: 10px;
+  }
