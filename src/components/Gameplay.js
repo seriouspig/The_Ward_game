@@ -205,11 +205,11 @@ const Gameplay = () => {
         setAdmittedPatients([...admittedPatients])
     }
 
-    const content = <div>
-                        <h2>Game Over</h2>    
-                        <p>Score: {points}</p>
+    const content = <div className="popup-content">
+                        <h2 className="game-over">Game Over</h2>    
+                        <p className="score">Score: {points}</p>
                         <Link to="/"> 
-                        <button>Play Again</button>
+                        <button className="play-again">Play Again</button>
                         </Link>
                     </div>
     

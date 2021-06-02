@@ -13,13 +13,15 @@
 .scoreboard{
     grid-area: scoreboard;
     border: black solid 8px;
-    padding: 5px
+    padding: 5px;
+    background-color: black;
 }
 
 .counter {
     grid-area: counter;
     border: black solid 8px;
-    padding: 5px
+    padding: 5px;
+    background-color: black;
 }
 
 .glossary{

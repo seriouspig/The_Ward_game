@@ -1,7 +1,7 @@
 .flex-specialists {
     display: flex;
     flex-flow: row wrap;
-    gap: 10px;
+    gap: 15px;
 
 }
 
