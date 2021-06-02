@@ -1,9 +1,10 @@
 import React from 'react'
+import '../style/ScoreTimer.css'
 
 const Counter = ({counter}) => {
     return (
-        <div>
-            Time left: {counter}
+        <div className="timer">
+            TIME LEFT: {counter}
         </div>
     )
 }

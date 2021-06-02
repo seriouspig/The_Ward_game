@@ -6,13 +6,15 @@ const PatientInfo = ({patient, symptomsNumber}) => {
 
     return (
         <>
-        <HealthBar percent={patient.health} />
+        <div className="health-bar">
+            <HealthBar percent={patient.health} />
+        </div>
         <div className="flex-container">
         <img src={`/images/patients/${patient.name}.png`} className="photo"/>
             <div>
             <p className="patient-data">{patient.name}</p>
             <p className="patient-data">Age:{patient.age}</p>
-            <p className="patient-data">Symptoms</p>
+            <p className="patient-data">Symptoms:</p>
             <Symptoms patient={patient}  symptomsNumber={symptomsNumber}/>
             </div>   
         </div>

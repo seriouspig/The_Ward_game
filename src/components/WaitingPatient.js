@@ -7,7 +7,9 @@ const WaitingPatient = ({patient, handleAdmission}) => {
         <div>
             <div className="component">
             <PatientInfo patient={patient} />
-            <button value={patient.id} onClick={handleAdmission}>Admit</button>
+            <div className="button-div">
+                <button className="waiting-button" value={patient.id} onClick={handleAdmission}>ADMIT</button>
+            </div>
             </div>
         </div>
     )
