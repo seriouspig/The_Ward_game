@@ -8,12 +8,16 @@ const Welcome = () => {
 
     const [isPopupShown, setIsPopupShown] = useState(false)
 
+    const instructions = <div>
+                          <img src="/images/backgrounds/instructions.png" className="instructions"/>
+                        </div>
+
     return(
         <>
           <p className="Title">THE WARD</p>
           <img/>
           <div className="flex-buttons">
-          <PopupLarge content="testing the popup!!!" onClose={() => setIsPopupShown(false)} isShown={isPopupShown} />
+          <PopupLarge content={instructions} onClose={() => setIsPopupShown(false)} isShown={isPopupShown} />
           <Link to="/gameplay">
             <button className="start-game">Start Diagnosing</button>
           </Link>
