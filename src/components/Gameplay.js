@@ -35,13 +35,10 @@ const Gameplay = () => {
         }, []) 
 
     useEffect(() => {
-        const request2 = new Request();
-    
-        request2.get('http://localhost:8080/api/patients')
-        .then((data) => {
-            setPatients(visiblePatients(data))
-        })
-        }, []) 
+        if(allPatients.length) {
+            setPatients(visiblePatients(allPatients))
+        }
+    }, [allPatients]) 
 
     useEffect(() => {
         const request1 = new Request();
@@ -55,7 +52,11 @@ const Gameplay = () => {
     const visiblePatients = (patientData) => {
         let visiblePatientsList = [];
             while(visiblePatientsList.length < 6){
-                visiblePatientsList.push(patientData[Math.floor((Math.random() * 100) + 1)])
+                let patient = allPatients[Math.floor((Math.random() * 100))]
+                while(patients.filter(p => p.id === patient.id).length) {
+                    patient = allPatients[Math.floor((Math.random() * 100))]
+                }
+                visiblePatientsList.push(patient)
             }
             return visiblePatientsList;
         }
@@ -110,7 +111,11 @@ const Gameplay = () => {
             
           }         
         }
-        patients.push(allPatients[Math.floor((Math.random() * 100) + 1)])
+        let patient = allPatients[Math.floor((Math.random() * 100))]
+        while(patients.filter(p => p.id === patient.id).length) {
+            patient = allPatients[Math.floor((Math.random() * 100))]
+        }
+        patients.push(patient)
         setPatients([...patients])   
               
       }
@@ -177,7 +182,11 @@ const Gameplay = () => {
                 setMessage(<p>{patient.name} died from {patient.illness.name}</p>)
                 setIsPatientPopupShown(true)
                 if (waitingPatients.length < 6) {
-                    patients.push(allPatients[Math.floor((Math.random() * 100) + 1)])
+                    let patient = allPatients[Math.floor((Math.random() * 100))]
+                    while(patients.filter(p => p.id === patient.id).length) {
+                        patient = allPatients[Math.floor((Math.random() * 100))]
+                    }
+                    patients.push(patient)
                 }
             } 
             if (patient.health >= 100) {
@@ -187,7 +196,7 @@ const Gameplay = () => {
                 setIsPatientPopupShown(true)
                 
             }        
-        }         
+        }        
         setPatients([...patients])   
     }
 
