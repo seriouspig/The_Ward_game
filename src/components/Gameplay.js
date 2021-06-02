@@ -171,7 +171,7 @@ const Gameplay = () => {
                 <Scoreboard points={points}/>
             </div>    
              <div className="glossary">  
-                <SpecialistGlossary />
+                <SpecialistGlossary specialists={specialists} />
             </div>
             <div className="waiting-room">
                 <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
