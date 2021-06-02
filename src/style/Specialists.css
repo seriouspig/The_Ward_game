@@ -1,0 +1,15 @@
+.flex-specialists {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+
+}
+
+.specialists-list{
+    list-style: none;
+    padding-left: 20px;
+}
+
+.specialty{
+    font-size: 15px;
+}

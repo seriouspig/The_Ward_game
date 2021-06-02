@@ -1,4 +1,5 @@
 import Specialist from './Specialist'
+import '../style/Specialists.css'
 
 const SpecialistGlossary = ({specialists}) => {
 
@@ -19,7 +20,7 @@ const SpecialistGlossary = ({specialists}) => {
 
     return(
         <>
-        <ul>
+        <ul className="specialists-list">
         {specialistsShown}
         </ul>
         </>

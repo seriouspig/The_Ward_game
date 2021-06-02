@@ -3,11 +3,13 @@ import Ward from './Ward'
 import SpecialistGlossary from './SpecialistGlossary'
 import Counter from './Counter'
 import Scoreboard from './Scoreboard'
-import Popup from './Popup'
+import PopupLarge from './PopupLarge'
 import {useState, useEffect} from 'react'
 import Request from '../helpers/request';
 import '../style/Gameplay.css'
-import { Jumbotron, Container } from 'react-bootstrap'
+import {Link} from 'react-router-dom';
+import Popup from './Popup'
+
 
 const Gameplay = () => {
 
@@ -19,6 +21,9 @@ const Gameplay = () => {
     const [points, setPoints] = useState(0) 
     const [intervalId, setIntervalId] = useState(null)
     const [counter, setCounter] = useState(100);
+    const [isPopupShown, setIsPopupShown] = useState(false)
+    const [isPatientPopupShown, setIsPatientPopupShown] = useState(false)
+    const [message, setMessage] = useState("")
 
     useEffect(() => {
         const request = new Request();
@@ -84,6 +89,12 @@ const Gameplay = () => {
         const timer = 
             counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
             return () => clearInterval(timer);
+    },[counter])
+
+    useEffect(() => {
+        if (counter === 0) {
+            setIsPopupShown(true);
+        }
     },[counter])
 
     
@@ -156,13 +167,15 @@ const Gameplay = () => {
         }
       }
         setAdmittedPatients([...admittedPatients])
-    }  
-    
+    } 
+     
     const handleDischarge = () => {
-        for (const patient of patients) {
+        for (const patient of patients) {    
             if (patient.health <= 0) {
                 patient.status = "Done";
                 setPoints(points - 100)
+                setMessage(<p>{patient.name} died from {patient.illness.name}</p>)
+                setIsPatientPopupShown(true)
                 if (waitingPatients.length < 6) {
                     patients.push(allPatients[Math.floor((Math.random() * 100) + 1)])
                 }
@@ -170,6 +183,9 @@ const Gameplay = () => {
             if (patient.health >= 100) {
                 patient.status = "Done";
                 setPoints(points + 100)
+                setMessage(<p>{patient.name} got cured from {patient.illness.name}</p>)
+                setIsPatientPopupShown(true)
+                
             }        
         }         
         setPatients([...patients])   
@@ -180,17 +196,26 @@ const Gameplay = () => {
         setAdmittedPatients([...admittedPatients])
     }
 
+    const content = <div>
+                        <h2>Game Over</h2>    
+                        <p>Score: {points}</p>
+                        <Link to="/"> 
+                        <button>Play Again</button>
+                        </Link>
+                    </div>
     
-
-
     return(
+        <>
+        <PopupLarge content={content} onClose={() => setIsPopupShown(false)} isShown={isPopupShown}/>
         <div className="main-grid">
             
             <div className="scoreboard">
                 <Scoreboard points={points}/>
-            </div>    
+            </div> 
+            <div className='counter'>
+            <Counter counter={counter} />  
+            </div> 
              <div className="glossary">  
-                <Counter counter={counter} />
                 <SpecialistGlossary specialists={specialists} />
             </div>
             <div className="waiting-room">
@@ -203,6 +228,8 @@ const Gameplay = () => {
                 healthDecreaseOnNewSymptom={healthDecreaseOnNewSymptom}/>
             </div>
         </div>
+        <Popup timer={3000} content={message} onClose={() => setIsPatientPopupShown(false)} isShown={isPatientPopupShown}/>
+        </>
     )
 }
     

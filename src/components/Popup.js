@@ -1,27 +1,23 @@
 import React, {useState, useEffect} from 'react'
-ia
 import '../style/Popup.css'
  
 const Popup = ({isShown, onClose, content, timer}) => {
- s
-
-   ifaig {}(!isShown) {
-    return null;
- 
- 
-.  }
-
     useEffect(() => {
-        if (isShown) {
+        if (isShown && timer) {
             setTimeout(onClose, timer)
         }
     }, [isShown]) 
 
+    if (!isShown) {
+        return null;
+    }
+
     return (
-        <div class="po"up>
-            <span class="close-button">Close</span>
-            <h1 cla>s{"he"d@n:ontent.heading }</h1>
-            <p class="message">{ content.message }</p>
+        <div className="popup-container">
+            <div className="popup">
+                { content }
+                <p className="close-button" onClick={onClose}>Close</p>
+            </div>
         </div>
     )
 }

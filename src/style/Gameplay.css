@@ -4,7 +4,7 @@
     grid-template-rows: 1fr 1fr 1fr 10fr;
     grid-template-areas: 
       "scoreboard waiting-room"
-      "glossary waiting-room"
+      "counter waiting-room"
       "glossary waiting-room"
       "glossary ward";
       border:black solid 8px;
@@ -12,6 +12,12 @@
 
 .scoreboard{
     grid-area: scoreboard;
+    border: black solid 8px;
+    padding: 5px
+}
+
+.counter {
+    grid-area: counter;
     border: black solid 8px;
     padding: 5px
 }

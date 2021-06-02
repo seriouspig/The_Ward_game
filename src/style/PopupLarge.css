@@ -1,5 +1,5 @@
-.popup-container {
-    position: fixed;
+.popuplarge-container {
+    position: relative ;
     bottom: 30px;
     left: 0;
     width: 100%;
@@ -7,20 +7,23 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
-.popup {
+.popuplarge {
     display: grid;
     grid-template-columns: 4fr 1fr;
     padding: 15px;
     justify-content: center;
     gap: 1em;
-    width: 50vw;
+    height: 800px;
+    width: 1000px;
 
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 15px;
+   
 }
-.close-button {
+.close-buttonlarge {
     text-decoration: underline;
     color:red;
     justify-self: flex-end;

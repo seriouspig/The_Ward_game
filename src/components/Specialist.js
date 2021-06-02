@@ -1,9 +1,15 @@
+import '../style/Specialists.css'
+
 const Specialist = ({specialist}) => {
     return (
-        <div>
-            <img src={`/images/specialists/${specialist.name}.png`} className="photo"/>
-            <h4>{`Dr. ${specialist.name}`}</h4>
-            <p>{specialist.speciality}</p>
+        <div className="flex-specialists">
+            <div>
+                <img src={`/images/specialists/${specialist.name}.png`} className="photo"/>
+            </div>
+            <div>
+                <h4>{`Dr. ${specialist.name}`}</h4>
+                <p className="specialty">{specialist.speciality}</p>
+            </div>
         </div>
     )
 }
