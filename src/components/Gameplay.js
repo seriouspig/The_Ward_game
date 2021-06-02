@@ -15,6 +15,7 @@ const Gameplay = () => {
     const [admittedPatients, setAdmittedPatients] = useState([])
     const [points, setPoints] = useState(0) 
     const [intervalId, setIntervalId] = useState(null)
+    const [counter, setCounter] = useState(100);
 
     useEffect(() => {
         const request = new Request();
@@ -75,6 +76,12 @@ const Gameplay = () => {
             setIntervalId(id)
         }
     },[patients])
+
+    useEffect(() => {
+        const timer = 
+            counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
+            return () => clearInterval(timer);
+    },[counter])
 
     
 
@@ -165,6 +172,15 @@ const Gameplay = () => {
         setPatients([...patients])   
     }
 
+    const healthDecreaseOnNewSymptom = patient => {
+        patient.health -= 5;
+        setAdmittedPatients([...admittedPatients])
+    }
+
+    const calculateTimeLeft = () => {
+
+    }
+
     return(
         <div className="main-grid">
             <div className="scoreboard">
@@ -172,6 +188,7 @@ const Gameplay = () => {
             </div>    
              <div className="glossary">  
                 <SpecialistGlossary />
+                <div>Countdown: {counter}</div>
             </div>
             <div className="waiting-room">
                 <WaitingRoom waitingPatients={waitingPatients} handleAdmission={handleAdmission}/>
@@ -179,7 +196,8 @@ const Gameplay = () => {
             <div className="ward">   
                 <Ward admittedPatients={admittedPatients} specialists={specialists} 
                 handleAssignment={(specialistId, patientId) => handleAssignment(specialistId, patientId)} 
-                handleTreatment={handleTreatment}/>
+                handleTreatment={handleTreatment}
+                healthDecreaseOnNewSymptom={healthDecreaseOnNewSymptom}/>
             </div>
         </div>
     )

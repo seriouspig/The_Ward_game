@@ -1,13 +1,14 @@
 import PatientInfo from './PatientInfo'
 import {useState} from 'react'
 
-const WardPatient = ({patient, specialists, handleAssignment, handleTreatment}) => {
+const WardPatient = ({patient, specialists, handleAssignment, handleTreatment, healthDecreaseOnNewSymptom}) => {
 
     const [symptomsNumber, setSymptomsNumber] = useState(3);
 
 
     const increaseSymptoms = () => {
         setSymptomsNumber(symptomsNumber + 1)
+        healthDecreaseOnNewSymptom(patient)
     }
 
     const submitAssingment = (evt) => {
