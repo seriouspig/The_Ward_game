@@ -14,7 +14,7 @@ const PatientInfo = ({patient, symptomsNumber}) => {
             <div>
             <p className="patient-data">{patient.name}</p>
             <p className="patient-data">Age:{patient.age}</p>
-            <p className="patient-data">Symptoms</p>
+            <p className="patient-data">Symptoms:</p>
             <Symptoms patient={patient}  symptomsNumber={symptomsNumber}/>
             </div>   
         </div>
