@@ -35,6 +35,9 @@
 }
 
 .ward{
+    background-color: aquamarine;
+    background-image: url('ward_background.png');
+    background-size: 100%;
     grid-area: ward;
     border: black solid 8px;
     padding: 5px
