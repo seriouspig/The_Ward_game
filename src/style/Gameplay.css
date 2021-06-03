@@ -1,6 +1,6 @@
 .main-grid{
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1.3fr 5fr;
     grid-template-rows: 1fr 1fr 1fr 10fr;
     grid-template-areas: 
       "scoreboard waiting-room"
@@ -60,9 +60,12 @@
 }
 
 .play-again{
-    color: red;
+    background-color: red;
+    color: white;
+    border: black solid 5px;
     font-size: 40px;
-    padding: 8px;
+    padding: 10px;
+    font-family:'Press Start 2P', cursive;
 
 }
 

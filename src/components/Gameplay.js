@@ -178,7 +178,7 @@ const Gameplay = () => {
         for (const patient of patients) {    
             if (patient.health <= 0) {
                 patient.status = "Done";
-                setPoints(points - 100)
+                setPoints(points - 50)
                 setMessage(<p>{patient.name} died from {patient.illness.name}</p>)
                 setIsPatientPopupShown(true)
                 if (waitingPatients.length < 6) {
