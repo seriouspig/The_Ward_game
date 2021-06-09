@@ -7,7 +7,7 @@ const Specialist = ({specialist}) => {
                 <img src={`/images/specialists/${specialist.name}.png`} className="specialist-photo"/>
             </div>
             <div>
-                <h4>{`Dr. ${specialist.name}`}</h4>
+                <h4 className="doctor-name">{`Dr. ${specialist.name}`}</h4>
                 <p className="specialty">{specialist.speciality}</p>
             </div>
         </div>
