@@ -28,7 +28,7 @@ const Gameplay = () => {
     useEffect(() => {
         const request = new Request();
     
-        request.get('http://localhost:8080/api/patients')
+        request.get('https://intense-taiga-65529.herokuapp.com/api/patients')
         .then((data) => {
             setAllPatients(data)
         })
@@ -43,7 +43,7 @@ const Gameplay = () => {
     useEffect(() => {
         const request1 = new Request();
 
-        request1.get('http://localhost:8080/api/specialists')
+        request1.get('https://intense-taiga-65529.herokuapp.com/api/specialists')
         .then((data) => {
             setSpecialists(data)
         })
